@@ -22,6 +22,28 @@ echo $e->getMessage();
 }
 
 
+}
+
+
+
+function grafico()
+{
+
+try {
+
+$conexion  = $this->get_conexion();
+$query     = "SELECT count(nombres)cant,sucursal  FROM empleado
+GROUP BY sucursal ORDER BY sucursal";
+$statement =  $conexion->prepare($query);
+$statement->execute();
+$result    = $statement->fetchAll(PDO::FETCH_ASSOC);
+return $result;
+	
+} catch (Exception $e) {
+	
+echo $e->getMessage();
+
+}
 
 
 
